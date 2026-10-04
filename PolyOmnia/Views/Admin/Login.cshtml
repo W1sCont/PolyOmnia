@@ -1,0 +1,78 @@
+﻿@model PolyOmnia.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Авторизація";
+}
+
+<div class="row justify-content-center align-items-center my-5">
+    <div class="col-12 col-md-8 col-lg-5">
+        <div class="card poly-card p-4 p-sm-5 shadow-lg position-relative overflow-hidden">
+
+            <!-- Декоративний фірмовий градієнтний акцент зверху картки -->
+            <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(135deg, var(--electric-indigo) 0%, var(--bright-coral) 100%);"></div>
+
+            <div class="text-center mb-4">
+                <i class="bi bi-infinity display-3 brand-icon mb-2 d-inline-block"></i>
+                <h2 class="fw-bold text-white mb-1">Вітаємо у PolyOmnia</h2>
+                <p class="text-muted small">Увійдіть у свій акаунт, щоб продовжити перегляд</p>
+            </div>
+
+            <!-- Загальні помилки валідації -->
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger border-0 bg-danger bg-opacity-10 text-danger rounded-3 mb-3 small"></div>
+
+            <form asp-action="Login" method="post" class="d-flex flex-column gap-3">
+
+                <!-- Email або Логін -->
+                <div>
+                    <label asp-for="EmailOrLogin" class="form-label text-light small fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-muted">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        <input asp-for="EmailOrLogin" class="form-control form-control-poly py-2" placeholder="user@polyomnia.com або login" autocomplete="username" />
+                    </div>
+                    <span asp-validation-for="EmailOrLogin" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <!-- Пароль -->
+                <div>
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <label asp-for="Password" class="form-label text-light small fw-semibold mb-0"></label>
+                        <a href="#" class="small text-decoration-none" style="color: var(--electric-indigo);">Забули пароль?</a>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-muted">
+                            <i class="bi bi-lock"></i>
+                        </span>
+                        <input asp-for="Password" class="form-control form-control-poly py-2" placeholder="••••••••" autocomplete="current-password" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <!-- Запом'ятати мене -->
+                <div class="form-check my-1">
+                    <input asp-for="RememberMe" class="form-check-input bg-dark border-secondary" type="checkbox" id="rememberMeCheck" />
+                    <label asp-for="RememberMe" class="form-check-label text-muted small" for="rememberMeCheck">
+                        Запам'ятати мене на цьому пристрої
+                    </label>
+                </div>
+
+                <!-- Кнопка Входу -->
+                <button type="submit" class="btn btn-brand py-2.5 rounded-pill fw-semibold mt-2 shadow-sm">
+                    <i class="bi bi-box-arrow-in-right me-1"></i> Увійти
+                </button>
+            </form>
+
+            <div class="border-top border-dark mt-4 pt-3 text-center">
+                <p class="text-muted small mb-0">
+                    Ще не маєте акаунту?
+                    <a asp-controller="Admin" asp-action="Register" class="fw-semibold text-decoration-none ms-1" style="color: var(--bright-coral)">Зареєструватися</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,115 @@
+﻿@model PolyOmnia.Models.RegisterViewModel
+@{
+    ViewData["Title"] = "Реєстрація";
+}
+
+<div class="row justify-content-center align-items-center my-5">
+    <div class="col-12 col-md-8 col-lg-5">
+        <div class="card poly-card p-4 p-sm-5 shadow-lg position-relative overflow-hidden">
+
+            <!-- Декоративна градієнтна смуга зверху -->
+            <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(135deg, var(--bright-coral) 0%, var(--electric-indigo) 100%);"></div>
+
+            <div class="text-center mb-4">
+                <i class="bi bi-person-plus-fill display-4 brand-icon mb-2 d-inline-block" style="color: var(--bright-coral);"></i>
+                <h2 class="fw-bold text-white mb-1">Приєднуйтесь до PolyOmnia</h2>
+                <p class="text-muted small">Створіть акаунт, щоб отримати доступ до всіх лекцій та можливостей</p>
+            </div>
+
+            <!-- Загальні помилки валідації -->
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger border-0 bg-danger bg-opacity-10 text-danger rounded-3 mb-3 small"></div>
+
+            <form asp-action="Register" method="post" class="d-flex flex-column gap-3">
+
+                <!-- Ім'я -->
+                <div>
+                    <label asp-for="Name" class="form-label text-light small fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-muted">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        <input asp-for="Name" class="form-control form-control-poly py-2" placeholder="Введіть ім'я" autocomplete="name" />
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <!-- Прізвище -->
+                <div>
+                    <label asp-for="Surname" class="form-label text-light small fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-muted">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        <input asp-for="Surname" class="form-control form-control-poly py-2" placeholder="Введіть прізвище" autocomplete="family-name" />
+                    </div>
+                    <span asp-validation-for="Surname" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <!-- Логін -->
+                <div>
+                    <label asp-for="Login" class="form-label text-light small fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-muted">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        <input asp-for="Login" class="form-control form-control-poly py-2" placeholder="Введіть логін" autocomplete="username" />
+                    </div>
+                    <span asp-validation-for="Login" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label asp-for="Email" class="form-label text-light small fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-muted">
+                            <i class="bi bi-envelope"></i>
+                        </span>
+                        <input asp-for="Email" class="form-control form-control-poly py-2" placeholder="name@example.com" autocomplete="email" />
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <!-- Пароль -->
+                <div>
+                    <label asp-for="Password" class="form-label text-light small fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-muted">
+                            <i class="bi bi-lock"></i>
+                        </span>
+                        <input asp-for="Password" class="form-control form-control-poly py-2" placeholder="• • • • • • • •" autocomplete="new-password" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <!-- Підтвердження пароля -->
+                <div>
+                    <label asp-for="ConfirmPassword" class="form-label text-light small fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-muted">
+                            <i class="bi bi-shield-lock"></i>
+                        </span>
+                        <input asp-for="ConfirmPassword" class="form-control form-control-poly py-2" placeholder="• • • • • • • •" autocomplete="new-password" />
+                    </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <!-- Кнопка створення акаунту -->
+                <button type="submit" class="btn btn-coral py-2.5 rounded-pill fw-semibold mt-3 shadow-sm">
+                    <i class="bi bi-check-circle me-1"></i> Зареєструватися
+                </button>
+            </form>
+
+            <div class="border-top border-dark mt-4 pt-3 text-center">
+                <p class="text-muted small mb-0">
+                    Вже є акаунт?
+                    <a asp-action="Login" class="fw-semibold text-decoration-none ms-1" style="color: var(--electric-indigo)">Увійти</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

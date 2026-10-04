@@ -1,0 +1,184 @@
+:root {
+    --bg-carbon: #0F0F12;
+    --card-bg: #18181C;
+    --card-border: #2A2A32;
+    --electric-indigo: #6C5CE7;
+    --deep-violet: #4A148C;
+    --bright-coral: #FF7675;
+    --text-main: #F1F1F5;
+    --text-muted: #B0B0C2;
+    --text-placeholder: #A0A0B5;
+}
+
+body {
+    background-color: var(--bg-carbon);
+    color: var(--text-main);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Navbar & Brand */
+.navbar {
+    background-color: rgba(15, 15, 18, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.brand-logo-text {
+    font-weight: 800;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--electric-indigo) 0%, var(--bright-coral) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand-icon {
+    color: var(--electric-indigo);
+    font-size: 1.6rem;
+}
+
+/* Buttons & Badges */
+.btn-brand {
+    background: linear-gradient(135deg, var(--electric-indigo) 0%, var(--deep-violet) 100%);
+    color: #FFFFFF !important;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+    .btn-brand:hover {
+        opacity: 0.9;
+        color: #FFFFFF !important;
+        transform: translateY(-1px);
+    }
+
+.btn-outline-brand {
+    border: 1px solid var(--electric-indigo);
+    color: var(--electric-indigo);
+    background: transparent;
+}
+
+    .btn-outline-brand:hover {
+        background: var(--electric-indigo);
+        color: #FFFFFF !important;
+    }
+
+/* Перемикач мов UA/EN */
+.btn-group .btn-outline-secondary {
+    border-color: var(--card-border);
+    color: var(--text-muted);
+}
+
+    .btn-group .btn-outline-secondary.active {
+        background-color: var(--electric-indigo);
+        border-color: var(--electric-indigo);
+        color: #FFFFFF !important;
+    }
+
+/* Forms & Placeholder Contrast Fix */
+.form-control-poly {
+    background-color: #18181C;
+    border: 1px solid var(--card-border);
+    color: #FFFFFF !important;
+}
+
+    .form-control-poly:focus {
+        background-color: #18181C;
+        border-color: var(--electric-indigo);
+        color: #FFFFFF !important;
+        box-shadow: 0 0 0 0.25rem rgba(108, 92, 231, 0.25);
+    }
+
+    /* Стилізація плейсхолдера для всіх браузерів */
+    .form-control-poly::placeholder {
+        color: var(--text-placeholder) !important;
+        opacity: 1;
+    }
+
+    .form-control-poly::-webkit-input-placeholder {
+        color: var(--text-placeholder) !important;
+    }
+
+    .form-control-poly::-moz-placeholder {
+        color: var(--text-placeholder) !important;
+    }
+
+/* Cards & Hero */
+.poly-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+    .poly-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--electric-indigo);
+        box-shadow: 0 8px 24px rgba(108, 92, 231, 0.2);
+    }
+
+.hero-banner {
+    background: linear-gradient(135deg, #18181C 0%, #25103A 50%, #0F0F12 100%);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+}
+
+/* Pagination Fix */
+.pagination .page-link {
+    background-color: #18181C;
+    border-color: var(--card-border);
+    color: var(--text-main);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--electric-indigo);
+    border-color: var(--electric-indigo);
+    color: #FFFFFF !important;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #121215;
+    border-color: var(--card-border);
+    color: #555566;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Яскрава кораллова кнопка (для Реєстрації) */
+.btn-coral {
+    background-color: var(--bright-coral) !important;
+    background: linear-gradient(135deg, #FF7675 0%, #E84393 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 118, 117, 0.35);
+    transition: all 0.25s ease-in-out;
+}
+
+    .btn-coral:hover {
+        color: #FFFFFF !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 118, 117, 0.55);
+        filter: brightness(1.1);
+    }
+
+    .btn-coral:active {
+        transform: translateY(0);
+    }
+
+/* Фіолетова кнопка (для Входу) */
+.btn-brand {
+    background: linear-gradient(135deg, var(--electric-indigo) 0%, var(--deep-violet) 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.35);
+    transition: all 0.25s ease-in-out;
+}
+
+    .btn-brand:hover {
+        color: #FFFFFF !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(108, 92, 231, 0.55);
+        filter: brightness(1.1);
+    }

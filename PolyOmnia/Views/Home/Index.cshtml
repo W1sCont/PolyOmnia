@@ -1,0 +1,145 @@
+﻿@model PolyOmnia.Models.HomeViewModel
+@{
+    ViewData["Title"] = "Головна";
+}
+
+<!-- HERO BANNER -->
+@if (Model.HeroVideo != null)
+{
+    <div class="hero-banner p-4 p-md-5 mb-5 position-relative shadow-lg">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <span class="badge mb-2 px-3 py-2 rounded-pill" style="background-color: var(--electric-indigo)">
+                    @(Model.HeroVideo.Genres?.FirstOrDefault()?.Name ?? "Головне відео")
+                </span>
+                <h1 class="display-5 fw-bold text-white mb-3">@Model.HeroVideo.Title</h1>
+                <p class="text-muted mb-2">Автор: <span class="text-light fw-semibold">@(Model.HeroVideo.User?.Login ?? "Senior Engineer")</span></p>
+                <p class="lead text-light opacity-75">@Model.HeroVideo.Description</p>
+
+                <div class="d-flex gap-3 mt-4">
+                    <a asp-controller="Video" asp-action="Watch" asp-route-id="@Model.HeroVideo.Id" class="btn btn-brand px-4 py-2 rounded-pill">
+                        <i class="bi bi-play-fill fs-5 align-middle me-1"></i> Дивитися зараз
+                    </a>
+                    @if (Model.HeroVideo.AllowDownload)
+                    {
+                        <a asp-controller="Video" asp-action="Download" asp-route-id="@Model.HeroVideo.Id" class="btn btn-outline-brand px-4 py-2 rounded-pill">
+                            <i class="bi bi-download me-1"></i> Завантажити
+                        </a>
+                    }
+                </div>
+            </div>
+
+            <!-- Права колонка: Інтерактивне прев'ю відео -->
+            <div class="col-lg-5 mt-4 mt-lg-0 text-center">
+                <a asp-controller="Video" asp-action="Watch" asp-route-id="@Model.HeroVideo.Id" class="text-decoration-none">
+                    <div class="position-relative ratio ratio-16x9 rounded-4 overflow-hidden border border-secondary shadow" style="background-color: #101014;">
+                        @if (!string.IsNullOrEmpty(Model.HeroVideo.ThumbnailUrlOrPath))
+                        {
+                            <img src="@Model.HeroVideo.ThumbnailUrlOrPath" class="card-img-top w-100 h-100 object-fit-cover" alt="@Model.HeroVideo.Title" />
+                        }
+                        else
+                        {
+                            <!-- Fallback якщо немає обкладинки -->
+                            <div class="d-flex align-items-center justify-content-center h-100 text-muted">
+                                <i class="bi bi-film fs-1" style="color: var(--electric-indigo)"></i>
+                            </div>
+                        }
+
+                        <!-- Іконка Play при наведенні -->
+                        <div class="position-absolute top-50 start-50 translate-middle text-white opacity-75">
+                            <i class="bi bi-play-circle-fill display-5"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- КАТЕГОРІЇ (Фільтр) -->
+<div id="categories" class="mb-4">
+    <h6 class="text-uppercase fw-bold mb-3" style="color: var(--text-muted); letter-spacing: 1px;">КАТЕГОРІЇ</h6>
+    <div class="d-flex flex-wrap gap-2">
+        <a asp-action="Index" class="btn btn-sm rounded-pill px-3 @(Model.SelectedGenreId == null ? "btn-brand" : "btn-outline-secondary text-light")">
+            Всі
+        </a>
+        @foreach (var genre in Model.Genres)
+        {
+            <a asp-action="Index" asp-route-genreId="@genre.Id"
+               class="btn btn-sm rounded-pill px-3 @(Model.SelectedGenreId == genre.Id ? "btn-brand" : "btn-outline-secondary text-light")">
+                @genre.Name
+            </a>
+        }
+    </div>
+</div>
+
+<!-- СІТКА ВІДЕО -->
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    @foreach (var video in Model.Videos)
+    {
+        <div class="col">
+            <div class="card poly-card h-100">
+                <!-- Preview Frame (Прев'ю з переходом на Watch) -->
+                <a asp-controller="Video" asp-action="Watch" asp-route-id="@video.Id" class="text-decoration-none">
+                    <div class="position-relative ratio ratio-16x9 rounded-top overflow-hidden" style="background-color: #101014;">
+                        @if (!string.IsNullOrEmpty(video.ThumbnailUrlOrPath))
+                        {
+                            <img src="@video.ThumbnailUrlOrPath" class="card-img-top w-100 h-100 object-fit-cover" alt="@video.Title" />
+                        }
+                        else
+                        {
+                            <!-- Fallback якщо немає обкладинки -->
+                            <div class="d-flex align-items-center justify-content-center h-100 text-muted">
+                                <i class="bi bi-film fs-1" style="color: var(--electric-indigo)"></i>
+                            </div>
+                        }
+
+                        <!-- Іконка Play при наведенні -->
+                        <div class="position-absolute top-50 start-50 translate-middle text-white opacity-75">
+                            <i class="bi bi-play-circle-fill display-5"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="card-body d-flex flex-column p-3">
+                    <h5 class="card-title text-white fs-6 mb-2 text-truncate" title="@video.Title">
+                        <a asp-controller="Video" asp-action="Watch" asp-route-id="@video.Id" class="text-white text-decoration-none">
+                            @video.Title
+                        </a>
+                    </h5>
+
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge rounded-pill bg-dark border border-secondary text-light">
+                            @(video.Genres?.FirstOrDefault()?.Name ?? "Загальне")
+                        </span>
+                        <small class="text-muted">
+                            <i class="bi bi-person me-1"></i>@(video.User?.Login ?? "Автор")
+                        </small>
+                    </div>
+
+                    <div class="mt-auto pt-3 d-flex justify-content-between align-items-center border-top border-dark">
+                        <div>
+                            @if (video.AllowDownload)
+                            {
+                                <a asp-controller="Video" asp-action="Download" asp-route-id="@video.Id" class="btn btn-sm btn-outline-success me-1 rounded-pill" title="Завантажити">
+                                    <i class="bi bi-download"></i>
+                                </a>
+                            }
+                        </div>
+                        <a asp-controller="Video" asp-action="Watch" asp-route-id="@video.Id" class="btn btn-sm btn-outline-brand rounded-pill px-3">
+                            Дивитися
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!-- ПАГІНАЦІЯ -->
+<nav class="mt-5">
+    <ul class="pagination justify-content-center pagination-sm">
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+    </ul>
+</nav>

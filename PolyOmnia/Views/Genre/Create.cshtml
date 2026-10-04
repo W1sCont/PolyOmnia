@@ -1,0 +1,36 @@
+﻿@model PolyOmnia.Models.CreateGenreViewModel
+
+@{
+    ViewData["Title"] = "Нова категорія";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card bg-dark text-white border-secondary shadow-lg">
+                <div class="card-body p-4">
+                    <h4 class="card-title text-center mb-4 font-monospace">
+                        <i class="bi bi-folder-plus text-primary me-2"></i>НОВА КАТЕГОРІЯ
+                    </h4>
+
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-4">
+                            <label asp-for="Name" class="form-label">Назва категорії</label>
+                            <input asp-for="Name" class="form-control bg-dark text-white border-secondary" placeholder="Наприклад: Штучний Інтелект..." autofocus />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary font-monospace">
+                                <i class="bi bi-save me-1"></i> Зберегти
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">Скасувати</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+﻿@using PolyOmnia.Models
+@using PolyOmnia.Repository
+@model PolyOmnia.Models.CreateVideoViewModel
+
+@inject IGenreRepository GenreRepository
+
+@{
+    ViewData["Title"] = "Додати відео";
+    var genres = await GenreRepository.GetAllAsync();
+    var genresSelectList = new SelectList(genres ?? new List<Genre>(), "Id", "Name");
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+            <div class="card bg-dark text-white border-secondary shadow-lg">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="card-title text-center mb-4 font-monospace">
+                        <i class="bi bi-cloud-arrow-up-fill text-primary me-2"></i>ДОДАТИ ВІДЕО
+                    </h3>
+
+                    <form asp-action="Create" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <!-- Стильний сегментований перемикач джерела відео -->
+                        <div class="mb-4">
+                            <label class="form-label d-block text-muted small fw-bold mb-2">СПОСІБ ДОДАВАННЯ</label>
+                            <div class="btn-group w-100 p-1 bg-black rounded-3 border border-secondary" role="group">
+                                <input type="radio" class="btn-check" name="SourceType" id="sourceFile"
+                                       value="@VideoSourceType.LocalFile"
+                                @(Model?.SourceType == VideoSourceType.LocalFile ? "checked" : "") onchange="toggleSourceType()">
+                                <label class="btn btn-outline-light border-0 rounded-2 py-2 d-flex align-items-center justify-content-center gap-2" for="sourceFile">
+                                    <i class="bi bi-file-earmark-play-fill"></i> Локальний файл
+                                </label>
+
+                                <input type="radio" class="btn-check" name="SourceType" id="sourceUrl"
+                                       value="@VideoSourceType.ExternalUrl"
+                                @(Model?.SourceType == VideoSourceType.ExternalUrl ? "checked" : "") onchange="toggleSourceType()">
+                                <label class="btn btn-outline-light border-0 rounded-2 py-2 d-flex align-items-center justify-content-center gap-2" for="sourceUrl">
+                                    <i class="bi bi-link-45deg fs-5"></i> Зовнішнє посилання
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Поле 1: Завантаження файлу (показується за замовчуванням) -->
+                        <div id="fileSection" class="mb-4">
+                            <label asp-for="VideoFile" class="form-label">Відеофайл (.mp4, .webm, .mkv)</label>
+                            <input asp-for="VideoFile" type="file" accept="video/*" class="form-control bg-dark text-white border-secondary" />
+                            <span asp-validation-for="VideoFile" class="text-danger"></span>
+                        </div>
+
+                        <!-- Поле 2: Зовнішній URL (приховане за замовчуванням) -->
+                        <div id="urlSection" class="mb-4 d-none">
+                            <label asp-for="ExternalUrl" class="form-label">Посилання на відео або Stream</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-secondary border-secondary text-white"><i class="bi bi-globe"></i></span>
+                                <input asp-for="ExternalUrl" class="form-control bg-dark text-white border-secondary" placeholder="https://example.com/video.mp4 або YouTube URL..." />
+                            </div>
+                            <span asp-validation-for="ExternalUrl" class="text-danger"></span>
+                        </div>
+
+                        <!-- Метадані відео -->
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label">Назва відео</label>
+                            <input asp-for="Title" class="form-control bg-dark text-white border-secondary" placeholder="Назва уроку або лекції..." />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="GenreId" class="form-label">Категорія / Жанр</label>
+                            <select asp-for="GenreId"
+                                    asp-items="genresSelectList"
+                                    class="form-select bg-dark text-white border-secondary">
+                                <option value="">-- Оберіть категорію --</option>
+                            </select>
+                            <span asp-validation-for="GenreId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Опис</label>
+                            <textarea asp-for="Description" rows="3" class="form-control bg-dark text-white border-secondary" placeholder="Короткий опис змісту..."></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="ThumbnailFile" class="form-label">Обкладинка (необов'язково)</label>
+                            <input asp-for="ThumbnailFile" type="file" accept="image/*" class="form-control bg-dark text-white border-secondary" />
+                        </div>
+
+                        <div class="form-check form-switch mb-4">
+                            <input asp-for="AllowDownload" class="form-check-input" type="checkbox" id="allowDownloadSwitch">
+                            <label class="form-check-label text-muted" for="allowDownloadSwitch">Дозволити завантаження відео користувачам</label>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg font-monospace">
+                                <i class="bi bi-check-circle me-1"></i> ЗБЕРЕГТИ ТА ОПУБЛІКУВАТИ
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function toggleSourceType() {
+            const isFile = document.getElementById('sourceFile').checked;
+            const fileSection = document.getElementById('fileSection');
+            const urlSection = document.getElementById('urlSection');
+
+            if (isFile) {
+                fileSection.classList.remove('d-none');
+                urlSection.classList.add('d-none');
+            } else {
+                fileSection.classList.add('d-none');
+                urlSection.classList.remove('d-none');
+            }
+        }
+
+        // Ініціалізація при завантаженні сторінки (для збереження стану після помилок валідації)
+        document.addEventListener("DOMContentLoaded", function () {
+            toggleSourceType();
+        });
+    </script>
+}
