@@ -1,6 +1,8 @@
-﻿@model PolyOmnia.Models.RegisterViewModel
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+@model PolyOmnia.Models.RegisterViewModel
 @{
-    ViewData["Title"] = "Реєстрація";
+    ViewData["Title"] = @SharedLocalizer["Reg_RegisterTitle"];
 }
 
 <div class="row justify-content-center align-items-center my-5">
@@ -12,8 +14,8 @@
 
             <div class="text-center mb-4">
                 <i class="bi bi-person-plus-fill display-4 brand-icon mb-2 d-inline-block" style="color: var(--bright-coral);"></i>
-                <h2 class="fw-bold text-white mb-1">Приєднуйтесь до PolyOmnia</h2>
-                <p class="text-muted small">Створіть акаунт, щоб отримати доступ до всіх лекцій та можливостей</p>
+                <h2 class="fw-bold text-white mb-1">@SharedLocalizer["Reg_RegisterTitle"]</h2>
+                <p class="text-muted small">@SharedLocalizer["Reg_CreateAccountPrompt"]</p>
             </div>
 
             <!-- Загальні помилки валідації -->
@@ -28,7 +30,7 @@
                         <span class="input-group-text bg-dark border-secondary text-muted">
                             <i class="bi bi-person"></i>
                         </span>
-                        <input asp-for="Name" class="form-control form-control-poly py-2" placeholder="Введіть ім'я" autocomplete="name" />
+                        <input asp-for="Name" class="form-control form-control-poly py-2" placeholder="@SharedLocalizer["Reg_EnterName"]" autocomplete="name" />
                     </div>
                     <span asp-validation-for="Name" class="text-danger small mt-1 d-block"></span>
                 </div>
@@ -40,7 +42,7 @@
                         <span class="input-group-text bg-dark border-secondary text-muted">
                             <i class="bi bi-person"></i>
                         </span>
-                        <input asp-for="Surname" class="form-control form-control-poly py-2" placeholder="Введіть прізвище" autocomplete="family-name" />
+                        <input asp-for="Surname" class="form-control form-control-poly py-2" placeholder=@SharedLocalizer["Reg_EnterSurname"] autocomplete="family-name" />
                     </div>
                     <span asp-validation-for="Surname" class="text-danger small mt-1 d-block"></span>
                 </div>
@@ -52,7 +54,7 @@
                         <span class="input-group-text bg-dark border-secondary text-muted">
                             <i class="bi bi-person"></i>
                         </span>
-                        <input asp-for="Login" class="form-control form-control-poly py-2" placeholder="Введіть логін" autocomplete="username" />
+                        <input asp-for="Login" class="form-control form-control-poly py-2" placeholder=@SharedLocalizer["Reg_EnterLogin"] autocomplete="username" />
                     </div>
                     <span asp-validation-for="Login" class="text-danger small mt-1 d-block"></span>
                 </div>
@@ -95,14 +97,14 @@
 
                 <!-- Кнопка створення акаунту -->
                 <button type="submit" class="btn btn-coral py-2.5 rounded-pill fw-semibold mt-3 shadow-sm">
-                    <i class="bi bi-check-circle me-1"></i> Зареєструватися
+                    <i class="bi bi-check-circle me-1"></i> @SharedLocalizer["Btn_Register"]
                 </button>
             </form>
 
             <div class="border-top border-dark mt-4 pt-3 text-center">
                 <p class="text-muted small mb-0">
-                    Вже є акаунт?
-                    <a asp-action="Login" class="fw-semibold text-decoration-none ms-1" style="color: var(--electric-indigo)">Увійти</a>
+                    @SharedLocalizer["Reg_AlreadyHaveAccount"]
+                    <a asp-action="Login" class="fw-semibold text-decoration-none ms-1" style="color: var(--electric-indigo)">@SharedLocalizer["Btn_Login"]</a>
                 </p>
             </div>
 

@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Auth_Authorization" xml:space="preserve">
+    <value>Logowanie</value>
+  </data>
+  <data name="Auth_ForgotPassword" xml:space="preserve">
+    <value>Nie pamiętasz hasła?</value>
+  </data>
+  <data name="Auth_LoginToContinue" xml:space="preserve">
+    <value>Zaloguj się na swoje konto, aby kontynuować oglądanie</value>
+  </data>
+  <data name="Auth_NoAccount" xml:space="preserve">
+    <value>Nie masz jeszcze konta?</value>
+  </data>
+  <data name="Auth_RememberMe" xml:space="preserve">
+    <value>Zapamiętaj mnie na tym urządzeniu</value>
+  </data>
+  <data name="Auth_Welcome_Title" xml:space="preserve">
+    <value>Witamy w serwisie</value>
+  </data>
   <data name="Btn_Cancel" xml:space="preserve">
     <value>Anuluj</value>
   </data>
@@ -128,6 +146,12 @@
   </data>
   <data name="Btn_DownloadVideo" xml:space="preserve">
     <value>Pobierz wideo</value>
+  </data>
+  <data name="Btn_Login" xml:space="preserve">
+    <value>Zaloguj się</value>
+  </data>
+  <data name="Btn_Register" xml:space="preserve">
+    <value>Zarejestruj się</value>
   </data>
   <data name="Btn_Report" xml:space="preserve">
     <value>Zgłoś</value>
@@ -141,8 +165,59 @@
   <data name="Category_All" xml:space="preserve">
     <value>Wszystkie</value>
   </data>
+  <data name="Category_CategoryName" xml:space="preserve">
+    <value>Nazwa kategorii</value>
+  </data>
+  <data name="Category_New" xml:space="preserve">
+    <value>Nowa kategoria</value>
+  </data>
+  <data name="Create_AllowDownload" xml:space="preserve">
+    <value>Zezwól użytkownikom na pobieranie wideo</value>
+  </data>
+  <data name="Create_BtnSubmit" xml:space="preserve">
+    <value>Opublikuj wideo</value>
+  </data>
+  <data name="Create_Description" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="Create_DescriptionPlaceholder" xml:space="preserve">
+    <value>Krótki opis wideo...</value>
+  </data>
+  <data name="Create_FileHelp" xml:space="preserve">
+    <value>Obsługiwane formaty: .mp4, .webm, .mkv (maks. 500 MB)</value>
+  </data>
+  <data name="Create_SourceLocalFile" xml:space="preserve">
+    <value>Prześlij plik z urządzenia</value>
+  </data>
+  <data name="Create_SourceTypeLabel" xml:space="preserve">
+    <value>Źródło wideo</value>
+  </data>
+  <data name="Create_SourceURL" xml:space="preserve">
+    <value>Link do wideo lub transmisji</value>
+  </data>
+  <data name="Create_ThumbnailLabel" xml:space="preserve">
+    <value>Dodaj miniaturkę</value>
+  </data>
+  <data name="Create_TitleLabel" xml:space="preserve">
+    <value>Tytuł wideo</value>
+  </data>
+  <data name="Create_UrlLabel" xml:space="preserve">
+    <value>Adres URL</value>
+  </data>
   <data name="Hero_DefaultBadge" xml:space="preserve">
     <value>Wyróżnione wideo</value>
+  </data>
+  <data name="Home_Title" xml:space="preserve">
+    <value>Strona główna</value>
+  </data>
+  <data name="Label_Default" xml:space="preserve">
+    <value>Domyślne</value>
+  </data>
+  <data name="Label_User" xml:space="preserve">
+    <value>Użytkownik</value>
+  </data>
+  <data name="Lesson_Materials" xml:space="preserve">
+    <value>Materiały do lekcji:</value>
   </data>
   <data name="Nav_Categories" xml:space="preserve">
     <value>Kategorie</value>
@@ -165,8 +240,35 @@
   <data name="Nav_UploadVideo" xml:space="preserve">
     <value>Dodaj wideo</value>
   </data>
+  <data name="Placeholder_CategoryExample" xml:space="preserve">
+    <value>Np. Sztuczna Inteligencja...</value>
+  </data>
+  <data name="Reg_AlreadyHaveAccount" xml:space="preserve">
+    <value>Masz już konto?</value>
+  </data>
+  <data name="Reg_CreateAccountPrompt" xml:space="preserve">
+    <value>Utwórz konto, aby uzyskać dostęp do wszystkich wykładów i funkcji</value>
+  </data>
+  <data name="Reg_EnterLogin" xml:space="preserve">
+    <value>Wprowadź nazwę użytkownika</value>
+  </data>
+  <data name="Reg_EnterName" xml:space="preserve">
+    <value>Wprowadź imię</value>
+  </data>
+  <data name="Reg_EnterSurname" xml:space="preserve">
+    <value>Wprowadź nazwisko</value>
+  </data>
+  <data name="Reg_RegisterTitle" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
+  <data name="Status_ComingSoon" xml:space="preserve">
+    <value>Wkrótce</value>
+  </data>
   <data name="Video_AuthorContent" xml:space="preserve">
     <value>Autor treści</value>
+  </data>
+  <data name="Video_BrowserNotSupported" xml:space="preserve">
+    <value>Twoja przeglądarka nie obsługuje odtwarzania wideo.</value>
   </data>
   <data name="Video_DescriptionTitle" xml:space="preserve">
     <value>&#x8;Opis materiału edukacyjnego:</value>

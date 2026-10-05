@@ -2,10 +2,14 @@
 @using PolyOmnia.Repository
 @model PolyOmnia.Models.CreateVideoViewModel
 
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Configuration
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 @inject IGenreRepository GenreRepository
 
 @{
-    ViewData["Title"] = "Додати відео";
+    ViewData["Title"] = @SharedLocalizer["Nav_UploadVideo"];
     var genres = await GenreRepository.GetAllAsync();
     var genresSelectList = new SelectList(genres ?? new List<Genre>(), "Id", "Name");
 }
@@ -16,7 +20,7 @@
             <div class="card bg-dark text-white border-secondary shadow-lg">
                 <div class="card-body p-4 p-md-5">
                     <h3 class="card-title text-center mb-4 font-monospace">
-                        <i class="bi bi-cloud-arrow-up-fill text-primary me-2"></i>ДОДАТИ ВІДЕО
+                        <i class="bi bi-cloud-arrow-up-fill text-primary me-2"></i>@SharedLocalizer["Nav_UploadVideo"]
                     </h3>
 
                     <form asp-action="Create" method="post" enctype="multipart/form-data">
@@ -24,34 +28,34 @@
 
                         <!-- Стильний сегментований перемикач джерела відео -->
                         <div class="mb-4">
-                            <label class="form-label d-block text-muted small fw-bold mb-2">СПОСІБ ДОДАВАННЯ</label>
+                            <label class="form-label d-block text-muted small fw-bold mb-2">@SharedLocalizer["Create_SourceTypeLabel"]</label>
                             <div class="btn-group w-100 p-1 bg-black rounded-3 border border-secondary" role="group">
                                 <input type="radio" class="btn-check" name="SourceType" id="sourceFile"
                                        value="@VideoSourceType.LocalFile"
                                 @(Model?.SourceType == VideoSourceType.LocalFile ? "checked" : "") onchange="toggleSourceType()">
                                 <label class="btn btn-outline-light border-0 rounded-2 py-2 d-flex align-items-center justify-content-center gap-2" for="sourceFile">
-                                    <i class="bi bi-file-earmark-play-fill"></i> Локальний файл
+                                    <i class="bi bi-file-earmark-play-fill"></i> @SharedLocalizer["Create_SourceLocalFile"]
                                 </label>
 
                                 <input type="radio" class="btn-check" name="SourceType" id="sourceUrl"
                                        value="@VideoSourceType.ExternalUrl"
                                 @(Model?.SourceType == VideoSourceType.ExternalUrl ? "checked" : "") onchange="toggleSourceType()">
                                 <label class="btn btn-outline-light border-0 rounded-2 py-2 d-flex align-items-center justify-content-center gap-2" for="sourceUrl">
-                                    <i class="bi bi-link-45deg fs-5"></i> Зовнішнє посилання
+                                    <i class="bi bi-link-45deg fs-5"></i> @SharedLocalizer["Create_UrlLabel"]
                                 </label>
                             </div>
                         </div>
 
                         <!-- Поле 1: Завантаження файлу (показується за замовчуванням) -->
                         <div id="fileSection" class="mb-4">
-                            <label asp-for="VideoFile" class="form-label">Відеофайл (.mp4, .webm, .mkv)</label>
+                            <label asp-for="VideoFile" class="form-label">@SharedLocalizer["Create_FileHelp"]</label>
                             <input asp-for="VideoFile" type="file" accept="video/*" class="form-control bg-dark text-white border-secondary" />
                             <span asp-validation-for="VideoFile" class="text-danger"></span>
                         </div>
 
                         <!-- Поле 2: Зовнішній URL (приховане за замовчуванням) -->
                         <div id="urlSection" class="mb-4 d-none">
-                            <label asp-for="ExternalUrl" class="form-label">Посилання на відео або Stream</label>
+                            <label asp-for="ExternalUrl" class="form-label">@SharedLocalizer["Create_SourceURL"]</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-secondary border-secondary text-white"><i class="bi bi-globe"></i></span>
                                 <input asp-for="ExternalUrl" class="form-control bg-dark text-white border-secondary" placeholder="https://example.com/video.mp4 або YouTube URL..." />
@@ -61,40 +65,40 @@
 
                         <!-- Метадані відео -->
                         <div class="mb-3">
-                            <label asp-for="Title" class="form-label">Назва відео</label>
-                            <input asp-for="Title" class="form-control bg-dark text-white border-secondary" placeholder="Назва уроку або лекції..." />
+                            <label asp-for="Title" class="form-label">@SharedLocalizer["Create_TitleLabel"]</label>
+                            <input asp-for="Title" class="form-control bg-dark text-white border-secondary" placeholder="@SharedLocalizer["Create_TitleLabel"]..." />
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="GenreId" class="form-label">Категорія / Жанр</label>
+                            <label asp-for="GenreId" class="form-label">@SharedLocalizer["Nav_Categories"]</label>
                             <select asp-for="GenreId"
                                     asp-items="genresSelectList"
                                     class="form-select bg-dark text-white border-secondary">
-                                <option value="">-- Оберіть категорію --</option>
+                                <option value="">-- @SharedLocalizer["Nav_Categories"] --</option>
                             </select>
                             <span asp-validation-for="GenreId" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Description" class="form-label">Опис</label>
-                            <textarea asp-for="Description" rows="3" class="form-control bg-dark text-white border-secondary" placeholder="Короткий опис змісту..."></textarea>
+                            <label asp-for="Description" class="form-label">@SharedLocalizer["Create_DescriptionLabel"]</label>
+                            <textarea asp-for="Description" rows="3" class="form-control bg-dark text-white border-secondary" placeholder="@SharedLocalizer["Create_DescriptionPlaceholder"]"></textarea>
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
 
                         <div class="mb-4">
-                            <label asp-for="ThumbnailFile" class="form-label">Обкладинка (необов'язково)</label>
+                            <label asp-for="ThumbnailFile" class="form-label">@SharedLocalizer["Create_ThumbnailLabel"]</label>
                             <input asp-for="ThumbnailFile" type="file" accept="image/*" class="form-control bg-dark text-white border-secondary" />
                         </div>
 
                         <div class="form-check form-switch mb-4">
                             <input asp-for="AllowDownload" class="form-check-input" type="checkbox" id="allowDownloadSwitch">
-                            <label class="form-check-label text-muted" for="allowDownloadSwitch">Дозволити завантаження відео користувачам</label>
+                            <label class="form-check-label text-muted" for="allowDownloadSwitch">@SharedLocalizer["Create_AllowDownload"]</label>
                         </div>
 
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary btn-lg font-monospace">
-                                <i class="bi bi-check-circle me-1"></i> ЗБЕРЕГТИ ТА ОПУБЛІКУВАТИ
+                                <i class="bi bi-check-circle me-1"></i> @SharedLocalizer["Create_BtnSubmit"]
                             </button>
                         </div>
                     </form>

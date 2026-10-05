@@ -1,7 +1,9 @@
-﻿@model PolyOmnia.Models.CreateGenreViewModel
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+@model PolyOmnia.Models.CreateGenreViewModel
 
 @{
-    ViewData["Title"] = "Нова категорія";
+    ViewData["Title"] = SharedLocalizer["Category_New"];
 }
 
 <div class="container py-5">
@@ -10,23 +12,23 @@
             <div class="card bg-dark text-white border-secondary shadow-lg">
                 <div class="card-body p-4">
                     <h4 class="card-title text-center mb-4 font-monospace">
-                        <i class="bi bi-folder-plus text-primary me-2"></i>НОВА КАТЕГОРІЯ
+                        <i class="bi bi-folder-plus text-primary me-2"></i>@SharedLocalizer["Category_New"]
                     </h4>
 
                     <form asp-action="Create" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
                         <div class="mb-4">
-                            <label asp-for="Name" class="form-label">Назва категорії</label>
-                            <input asp-for="Name" class="form-control bg-dark text-white border-secondary" placeholder="Наприклад: Штучний Інтелект..." autofocus />
+                            <label asp-for="Name" class="form-label">@SharedLocalizer["Category_CategoryName"]</label>
+                            <input asp-for="Name" class="form-control bg-dark text-white border-secondary" placeholder="@SharedLocalizer["Placeholder_CategoryExample"]" autofocus />
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
 
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary font-monospace">
-                                <i class="bi bi-save me-1"></i> Зберегти
+                                <i class="bi bi-save me-1"></i> @SharedLocalizer["Btn_Save"]
                             </button>
-                            <a asp-action="Index" class="btn btn-outline-secondary">Скасувати</a>
+                            <a asp-action="Index" class="btn btn-outline-secondary">@SharedLocalizer["Btn_Cancel"]</a>
                         </div>
                     </form>
                 </div>

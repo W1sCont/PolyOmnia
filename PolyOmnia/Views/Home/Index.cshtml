@@ -1,6 +1,8 @@
-﻿@model PolyOmnia.Models.HomeViewModel
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+@model PolyOmnia.Models.HomeViewModel
 @{
-    ViewData["Title"] = "Головна";
+    ViewData["Title"] = @SharedLocalizer["Home_Title"];
 }
 
 <!-- HERO BANNER -->
@@ -10,20 +12,20 @@
         <div class="row align-items-center">
             <div class="col-lg-7">
                 <span class="badge mb-2 px-3 py-2 rounded-pill" style="background-color: var(--electric-indigo)">
-                    @(Model.HeroVideo.Genres?.FirstOrDefault()?.Name ?? "Головне відео")
+                    @(Model.HeroVideo.Genres?.FirstOrDefault()?.Name ?? SharedLocalizer["Label_Default"].Value)
                 </span>
                 <h1 class="display-5 fw-bold text-white mb-3">@Model.HeroVideo.Title</h1>
-                <p class="text-muted mb-2">Автор: <span class="text-light fw-semibold">@(Model.HeroVideo.User?.Login ?? "Senior Engineer")</span></p>
+                <p class="text-muted mb-2">Автор: <span class="text-light fw-semibold">@(Model.HeroVideo.User?.Login ?? SharedLocalizer["Label_User"].Value)</span></p>
                 <p class="lead text-light opacity-75">@Model.HeroVideo.Description</p>
 
                 <div class="d-flex gap-3 mt-4">
                     <a asp-controller="Video" asp-action="Watch" asp-route-id="@Model.HeroVideo.Id" class="btn btn-brand px-4 py-2 rounded-pill">
-                        <i class="bi bi-play-fill fs-5 align-middle me-1"></i> Дивитися зараз
+                        <i class="bi bi-play-fill fs-5 align-middle me-1"></i> @SharedLocalizer["Btn_WatchNow"]
                     </a>
                     @if (Model.HeroVideo.AllowDownload)
                     {
                         <a asp-controller="Video" asp-action="Download" asp-route-id="@Model.HeroVideo.Id" class="btn btn-outline-brand px-4 py-2 rounded-pill">
-                            <i class="bi bi-download me-1"></i> Завантажити
+                            <i class="bi bi-download me-1"></i> @SharedLocalizer["Btn_Download"]
                         </a>
                     }
                 </div>
@@ -58,10 +60,10 @@
 
 <!-- КАТЕГОРІЇ (Фільтр) -->
 <div id="categories" class="mb-4">
-    <h6 class="text-uppercase fw-bold mb-3" style="color: var(--text-muted); letter-spacing: 1px;">КАТЕГОРІЇ</h6>
+    <h6 class="text-uppercase fw-bold mb-3" style="color: var(--text-muted); letter-spacing: 1px;">@SharedLocalizer["Nav_Categories"]</h6>
     <div class="d-flex flex-wrap gap-2">
         <a asp-action="Index" class="btn btn-sm rounded-pill px-3 @(Model.SelectedGenreId == null ? "btn-brand" : "btn-outline-secondary text-light")">
-            Всі
+            @SharedLocalizer["Category_All"]
         </a>
         @foreach (var genre in Model.Genres)
         {
@@ -121,13 +123,13 @@
                         <div>
                             @if (video.AllowDownload)
                             {
-                                <a asp-controller="Video" asp-action="Download" asp-route-id="@video.Id" class="btn btn-sm btn-outline-success me-1 rounded-pill" title="Завантажити">
+                                <a asp-controller="Video" asp-action="Download" asp-route-id="@video.Id" class="btn btn-sm btn-outline-success me-1 rounded-pill" title="@SharedLocalizer["Btn_Download"]">
                                     <i class="bi bi-download"></i>
                                 </a>
                             }
                         </div>
                         <a asp-controller="Video" asp-action="Watch" asp-route-id="@video.Id" class="btn btn-sm btn-outline-brand rounded-pill px-3">
-                            Дивитися
+                            @SharedLocalizer["Btn_WatchNow"]
                         </a>
                     </div>
                 </div>

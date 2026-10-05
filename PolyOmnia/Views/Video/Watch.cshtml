@@ -1,16 +1,21 @@
 ﻿@using PolyOmnia.Models
 @using PolyOmnia.Helpers
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 @model PolyOmnia.Models.Video
 
 @{
     ViewData["Title"] = Model.Title;
 }
 
-<div class="container mt-4">
-    <!-- 1. ВІДЕО ПЛЕЄР (Широкий формат на 100% контейнера) -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="ratio ratio-16x9 bg-black rounded-3 border border-secondary shadow-lg overflow-hidden">
+<div class="container-fluid px-lg-5 py-4">
+    <div class="row g-4">
+
+        <!-- ЛІВА КОЛОНКА: ВІДЕО ПЛЕЄР ТА ОСНОВНИЙ ОПИС (col-lg-8) -->
+        <div class="col-lg-8 col-xl-9">
+
+            <!-- Плеєр -->
+            <div class="ratio ratio-16x9 bg-black rounded-3 border border-secondary shadow-lg overflow-hidden mb-3">
                 @if (Model.SourceType == VideoSourceType.ExternalUrl && VideoUrlHelper.IsYouTubeUrl(Model.UrlOrPath))
                 {
                     <iframe src="@Model.UrlOrPath"
@@ -24,104 +29,99 @@
                 {
                     <video controls poster="@Model.ThumbnailUrlOrPath" class="w-100 h-100" style="object-fit: contain;">
                         <source src="@Model.UrlOrPath" type="video/mp4">
-                        Ваш браузер не підтримує відтворення відео.
+                        @SharedLocalizer["Video_BrowserNotSupported"]
                     </video>
                 }
             </div>
-        </div>
-    </div>
 
-    <!-- 2. НИЖНЯ ПАНЕЛЬ: ІНФОРМАЦІЯ ТА ДІЇ / АВТОР -->
-    <div class="row g-4">
-
-        <!-- ЛІВА КОЛОНКА: ІНФОРМАЦІЯ ПРО ВІДЕО -->
-        <div class="col-lg-7 col-xl-8">
-            <div class="card bg-dark text-white border-secondary p-4 shadow-sm h-100">
-
-                <!-- Категорія та статистика -->
-                <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
-                    <span class="badge bg-primary px-3 py-2 fs-7 rounded-pill">
-                        <i class="bi bi-tag-fill me-1"></i>
-                        @(Model.Genres?.FirstOrDefault()?.Name ?? "Загальне")
-                    </span>
-                    <span class="text-muted fs-7">
-                        <i class="bi bi-dot"></i> @Model.ViewCount переглядів
-                    </span>
-                    <span class="text-muted fs-7">
-                        <i class="bi bi-dot"></i> @Model.CreatedAt.ToString("dd MMM yyyy")
-                    </span>
-                </div>
-
-                <!-- Назва відео -->
-                <h2 class="fw-bold mb-3 text-white fs-3">@Model.Title</h2>
-
-                <hr class="border-secondary my-3" />
-
-                <!-- Опис навчального матеріалу -->
+            <!-- Детальний опис під плеєром -->
+            <div class="card bg-dark text-white border-secondary p-4 shadow-sm rounded-3">
                 <h5 class="fw-semibold text-light mb-2 fs-6 text-uppercase tracking-wider">
-                    Опис навчального матеріалу:
+                    @SharedLocalizer["Video_DescriptionTitle"]
                 </h5>
                 <p class="text-secondary fs-6 lh-base mb-0 style-description">
-                    @(string.IsNullOrWhiteSpace(Model.Description) ? "Опис до цього відео відсутній." : Model.Description)
+                    @(string.IsNullOrWhiteSpace(Model.Description) ? SharedLocalizer["Video_NoDescription"].Value : Model.Description)
                 </p>
             </div>
+
         </div>
 
-        <!-- ПРАВА КОЛОНКА: ПАНЕЛЬ ДІЙ ТА АВТОРА -->
-        <div class="col-lg-5 col-xl-4">
-            <div class="d-flex flex-column gap-3">
+        <!-- ПРАВА КОЛОНКА: МЕТАДАНІ, АВТОР, ДІЇ ТА МАТЕРІАЛИ (col-lg-4) -->
+        <div class="col-lg-4 col-xl-3">
+            <div class="d-flex flex-column gap-3 sticky-top" style="top: 20px;">
+
+                <!-- Карточка метаінформації та заголовка -->
+                <div class="card bg-dark text-white border-secondary p-3 shadow-sm rounded-3">
+
+                    <!-- Категорія та статистика -->
+                    <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
+                        <span class="badge bg-primary px-2 py-1 fs-8 rounded-pill">
+                            <i class="bi bi-tag-fill me-1"></i>
+                            @(Model.Genres?.FirstOrDefault()?.Name ?? SharedLocalizer["Label_Default"].Value)
+                        </span>
+                        <span class="text-muted fs-7">
+                            <i class="bi bi-eye me-1"></i>@Model.ViewCount @SharedLocalizer["Video_Views"]
+                        </span>
+                        <span class="text-muted fs-7">
+                            <i class="bi bi-calendar3 me-1"></i>@Model.CreatedAt.ToString("dd MMM yyyy")
+                        </span>
+                    </div>
+
+                    <!-- Назва відео -->
+                    <h1 class="fw-bold text-white fs-4 mb-0">@Model.Title</h1>
+                </div>
 
                 <!-- Блок Автора -->
-                <div class="card bg-dark text-white border-secondary p-3 shadow-sm">
+                <div class="card bg-dark text-white border-secondary p-3 shadow-sm rounded-3">
                     <div class="d-flex align-items-center gap-3">
-                        <div class="avatar-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold fs-4 rounded-circle" style="width: 50px; height: 50px;">
+                        <div class="avatar-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold fs-5 rounded-circle shadow-sm" style="width: 45px; height: 45px;">
                             @(Model.User?.Login?.Substring(0, 1).ToUpper() ?? "A")
                         </div>
-                        <div>
-                            <h6 class="mb-0 fw-bold text-white fs-6">
-                                @(Model.User?.Login ?? "Невідомий автор")
+                        <div class="overflow-hidden">
+                            <h6 class="mb-0 fw-bold text-white fs-6 text-truncate">
+                                @(Model.User?.Login ?? SharedLocalizer["Video_UnknownAuthor"].Value)
                             </h6>
-                            <small class="text-muted fs-7">Автор контенту</small>
+                            <small class="text-muted fs-7">@SharedLocalizer["Video_AuthorContent"]</small>
                         </div>
                     </div>
                 </div>
 
                 <!-- Блок Кнопок Дій -->
-                <div class="card bg-dark text-white border-secondary p-3 shadow-sm d-flex flex-column gap-2">
+                <div class="card bg-dark text-white border-secondary p-3 shadow-sm rounded-3 d-flex flex-column gap-2">
                     @if (Model.AllowDownload && Model.SourceType == VideoSourceType.LocalFile)
                     {
-                        <a href="@Model.UrlOrPath" download class="btn btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2 py-2">
-                            <i class="bi bi-download"></i> Завантажити відео
+                        <a href="@Model.UrlOrPath" download class="btn btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2 py-2 fs-7 fw-semibold">
+                            <i class="bi bi-download"></i> @SharedLocalizer["Btn_Download"]
                         </a>
                     }
                     else
                     {
-                        <button class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2 py-2" disabled>
-                            <i class="bi bi-download"></i> Завантаження обмежено
+                        <button class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2 py-2 fs-7" disabled>
+                            <i class="bi bi-download"></i> @SharedLocalizer["Btn_DownloadDisabled"]
                         </button>
                     }
 
-                    <button class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2 py-2">
-                        <i class="bi bi-flag"></i> Поскаржитися / Report
+                    <button class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2 py-2 fs-7">
+                        <i class="bi bi-flag"></i> @SharedLocalizer["Btn_Report"]
                     </button>
                 </div>
 
-                <!-- Блок Додаткових Матеріалів (Папка матеріалів) -->
-                <div class="card bg-dark text-white border-secondary p-3 shadow-sm">
-                    <h6 class="fw-bold mb-3 fs-6 text-uppercase text-light border-bottom border-secondary pb-2">
-                        <i class="bi bi-folder2-open me-2 text-primary"></i>Матеріали уроку:
+                <!-- Блок Додаткових Матеріалів -->
+                <div class="card bg-dark text-white border-secondary p-3 shadow-sm rounded-3">
+                    <h6 class="fw-bold mb-3 fs-7 text-uppercase text-light border-bottom border-secondary pb-2">
+                        <i class="bi bi-folder2-open me-2 text-primary"></i>@SharedLocalizer["Lesson_Materials"]
                     </h6>
 
                     <ul class="list-unstyled mb-0 d-flex flex-column gap-2">
                         <li class="d-flex align-items-center gap-2 text-muted fs-7">
                             <i class="bi bi-file-earmark-pdf text-danger"></i>
                             <span class="text-truncate">Presentation.pdf</span>
-                            <small class="ms-auto text-secondary">(скоро)</small>
+                            <small class="ms-auto text-secondary">(@SharedLocalizer["Status_ComingSoon"])</small>
                         </li>
                         <li class="d-flex align-items-center gap-2 text-muted fs-7">
                             <i class="bi bi-file-earmark-zip text-warning"></i>
                             <span class="text-truncate">source_code.zip</span>
-                            <small class="ms-auto text-secondary">(скоро)</small>
+                            <small class="ms-auto text-secondary">(@SharedLocalizer["Status_ComingSoon"])</small>
                         </li>
                     </ul>
                 </div>
