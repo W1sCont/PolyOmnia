@@ -204,14 +204,65 @@
   <data name="Create_UrlLabel" xml:space="preserve">
     <value>URL</value>
   </data>
+  <data name="Err_EmailOrLogin" xml:space="preserve">
+    <value>Enter Email or Login</value>
+  </data>
+  <data name="Err_EnterPassword" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+  <data name="Err_FirstNameLength" xml:space="preserve">
+    <value>First name must be between 2 and 30 characters</value>
+  </data>
+  <data name="Err_InvalidEmail" xml:space="preserve">
+    <value>Invalid email format</value>
+  </data>
+  <data name="Err_LastNameLength" xml:space="preserve">
+    <value>Last name must be between 2 and 30 characters</value>
+  </data>
+  <data name="Err_PasswordsDoNotMatch" xml:space="preserve">
+    <value>Passwords do not match</value>
+  </data>
+  <data name="Err_PasswordTooShort" xml:space="preserve">
+    <value>Password must be at least 6 characters</value>
+  </data>
+  <data name="Err_UsernameLength" xml:space="preserve">
+    <value>Login must be between 3 and 30 characters</value>
+  </data>
   <data name="Hero_DefaultBadge" xml:space="preserve">
     <value>Featured Video</value>
   </data>
   <data name="Home_Title" xml:space="preserve">
     <value>Home page</value>
   </data>
+  <data name="Label_Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
   <data name="Label_Default" xml:space="preserve">
     <value>Default</value>
+  </data>
+  <data name="Label_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Label_EmailOrLogin" xml:space="preserve">
+    <value>Email or Login</value>
+  </data>
+  <data name="Label_FirstName" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="Label_General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Label_LastName" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="Label_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Label_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Label_RememberMe" xml:space="preserve">
+    <value>Remember me</value>
   </data>
   <data name="Label_User" xml:space="preserve">
     <value>User</value>
@@ -231,6 +282,9 @@
   <data name="Nav_Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="Nav_MyProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
   <data name="Nav_Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
@@ -245,6 +299,9 @@
   </data>
   <data name="Reg_AlreadyHaveAccount" xml:space="preserve">
     <value>Already have an account?</value>
+  </data>
+  <data name="Reg_ConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
   </data>
   <data name="Reg_CreateAccountPrompt" xml:space="preserve">
     <value>Create an account to get access to all lectures and features</value>

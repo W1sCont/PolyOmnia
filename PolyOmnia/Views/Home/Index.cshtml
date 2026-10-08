@@ -15,7 +15,7 @@
                     @(Model.HeroVideo.Genres?.FirstOrDefault()?.Name ?? SharedLocalizer["Label_Default"].Value)
                 </span>
                 <h1 class="display-5 fw-bold text-white mb-3">@Model.HeroVideo.Title</h1>
-                <p class="text-muted mb-2">Автор: <span class="text-light fw-semibold">@(Model.HeroVideo.User?.Login ?? SharedLocalizer["Label_User"].Value)</span></p>
+                <p class="text-muted mb-2">@SharedLocalizer["Label_Author"]: <span class="text-light fw-semibold">@(Model.HeroVideo.User?.Login ?? SharedLocalizer["Label_User"].Value)</span></p>
                 <p class="lead text-light opacity-75">@Model.HeroVideo.Description</p>
 
                 <div class="d-flex gap-3 mt-4">
@@ -112,10 +112,10 @@
 
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge rounded-pill bg-dark border border-secondary text-light">
-                            @(video.Genres?.FirstOrDefault()?.Name ?? "Загальне")
+                            @(video.Genres?.FirstOrDefault()?.Name ?? SharedLocalizer["Label_General"].Value)
                         </span>
                         <small class="text-muted">
-                            <i class="bi bi-person me-1"></i>@(video.User?.Login ?? "Автор")
+                            <i class="bi bi-person me-1"></i>@(video.User?.Login ?? SharedLocalizer["Label_User"].Value)
                         </small>
                     </div>
 

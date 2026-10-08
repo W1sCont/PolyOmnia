@@ -23,7 +23,7 @@
                         <i class="bi bi-cloud-arrow-up-fill text-primary me-2"></i>@SharedLocalizer["Nav_UploadVideo"]
                     </h3>
 
-                    <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <form asp-controller="Video" asp-action="Create" method="post" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
                         <!-- Стильний сегментований перемикач джерела відео -->
@@ -81,7 +81,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Description" class="form-label">@SharedLocalizer["Create_DescriptionLabel"]</label>
+                            <label asp-for="Description" class="form-label">@SharedLocalizer["Create_DescriptionPlaceholder"]</label>
                             <textarea asp-for="Description" rows="3" class="form-control bg-dark text-white border-secondary" placeholder="@SharedLocalizer["Create_DescriptionPlaceholder"]"></textarea>
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>

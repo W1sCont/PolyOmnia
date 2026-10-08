@@ -23,7 +23,7 @@
 }
 
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="@currentCultureCode">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,8 +33,21 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top px-3">
+    <!-- Додано z-index: 1030 та background-color для перекриття контенту -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top px-3" style="background-color: #121215; z-index: 1030;">
         <div class="container">
+
+            <!-- Логотип та Назва картинками -->
+            @* <a class="navbar-brand d-flex align-items-center gap-2 py-0" asp-controller="Home" asp-action="Index">
+                <img src="~/design/logo1.png"
+                     alt="PolyOmnia Logo"
+                     class="brand-logo-img"
+                     style="height: 32px; width: auto; object-fit: contain;" />
+                <img src="~/design/polyomnia1.png"
+                     alt="PolyOmnia"
+                     class="brand-text-img d-none d-sm-inline-block"
+                     style="height: 20px; width: auto; object-fit: contain;" />
+            </a> *@
             <a class="navbar-brand d-flex align-items-center gap-2" asp-controller="Home" asp-action="Index">
                 <i class="bi bi-infinity brand-icon"></i>
                 <span class="brand-logo-text">PolyOmnia</span>
@@ -53,9 +66,13 @@
                     </li>
                 </ul>
 
-                <!-- Пошук -->
+                <!-- Пошук (з виправленим placeholder) -->
                 <form class="d-flex me-3" role="search" asp-controller="Home" asp-action="Index" method="get">
-                    <input class="form-control form-control-poly me-2 rounded-pill px-3" type="search" name="search" placeholder=@SharedLocalizer["Nav_SearchPlaceholder"] aria-label="Search">
+                    <input class="form-control form-control-poly me-2 rounded-pill px-3"
+                           type="search"
+                           name="search"
+                           placeholder="@SharedLocalizer["Nav_SearchPlaceholder"]"
+                           aria-label="Search">
                 </form>
 
                 <!-- Мова -->
@@ -83,21 +100,41 @@
                     {
                         <!-- Блок для залогованого користувача -->
                         <div class="dropdown">
-                            <button class="btn btn-outline-brand dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-person-circle"></i>
+                            <button class="btn btn-outline-brand dropdown-toggle d-flex align-items-center gap-2"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                <i class="bi bi-person-circle text-primary"></i>
                                 <span>@User.Identity.Name</span>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
-                                <li><a class="dropdown-item" asp-controller="Video" asp-action="Create"><i class="bi bi-person me-2"></i>@SharedLocalizer["Nav_UploadVideo"]</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark border-secondary shadow-lg py-1 mt-1" style="z-index: 1050; min-width: 200px;">
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center gap-2 py-2 fs-7" asp-controller="Account" asp-action="Profile">
+                                        <i class="bi bi-person-circle text-primary"></i>
+                                        <span>@SharedLocalizer["Nav_MyProfile"]</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center gap-2 py-2 fs-7" asp-controller="Video" asp-action="Create">
+                                        <i class="bi bi-cloud-upload text-primary"></i>
+                                        <span>@SharedLocalizer["Nav_UploadVideo"]</span>
+                                    </a>
+                                </li>
                                 @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
                                 {
-                                    <li><a class="dropdown-item" asp-controller="Genre" asp-action="Index"><i class="bi bi-tags me-1"></i> @SharedLocalizer["Nav_Categories"]</a></li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center gap-2 py-2 fs-7" asp-controller="Genre" asp-action="Index">
+                                            <i class="bi bi-tags text-warning"></i>
+                                            <span>@SharedLocalizer["Nav_Categories"]</span>
+                                        </a>
+                                    </li>
                                 }
+                                <li><hr class="dropdown-divider border-secondary my-1"></li>
                                 <li>
-                                    <form asp-controller="Admin" asp-action="Logout" method="post" class="d-inline">
-                                        <button type="submit" class="dropdown-item text-danger">
-                                            <i class="bi bi-box-arrow-right me-2"></i>@SharedLocalizer["Nav_Logout"]
+                                    <form asp-controller="Account" asp-action="Logout" method="post" class="m-0">
+                                        <button type="submit" class="dropdown-item d-flex align-items-center gap-2 py-2 fs-7 text-danger">
+                                            <i class="bi bi-box-arrow-right"></i>
+                                            <span>@SharedLocalizer["Nav_Logout"]</span>
                                         </button>
                                     </form>
                                 </li>
@@ -107,7 +144,7 @@
                     else
                     {
                         <!-- Блок для гостей -->
-                        <a asp-controller="Admin" asp-action="Login" class="btn btn-brand rounded-pill px-3">
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-brand rounded-pill px-3">
                             <i class="bi bi-person-fill me-1"></i> @SharedLocalizer["Nav_Profile"] / @SharedLocalizer["Nav_Login"]
                         </a>
                     }
@@ -121,7 +158,7 @@
     </div>
 
     <footer class="footer border-top border-secondary py-4 my-4 text-center text-muted">
-        <p class="mb-1">&copy; @DateTime.Now.Year - <strong style="color: var(--electric-indigo)">PolyOmnia</strong>. One Universe. Infinite Stories.</p>
+        <p class="mb-1">&copy; @DateTime.Now.Year - <strong style="color: var(--electric-indigo, #6366f1)">PolyOmnia</strong>. One Universe. Infinite Stories.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

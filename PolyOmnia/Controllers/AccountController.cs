@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PolyOmnia.Models;
 using PolyOmnia.Repository;
@@ -7,7 +8,7 @@ using System.Security.Claims;
 
 namespace PolyOmnia.Controllers
 {
-    public class AdminController(IUserRepository userRepository, IPasswordHasher passwordHasher) : Controller
+    public class AccountController(IUserRepository userRepository, IPasswordHasher passwordHasher) : Controller
     {
         private readonly IUserRepository _userRepository = userRepository;
         private readonly IPasswordHasher _passwordHasher = passwordHasher;
@@ -27,13 +28,13 @@ namespace PolyOmnia.Controllers
                 return View(model);
             }
 
-            if (!_userRepository.IsLoginUniqueAsync(model.Login).Result)
+            if (!await _userRepository.IsLoginUniqueAsync(model.Login))
             {
                 ModelState.AddModelError("Login", "Login already exists.");
                 return View(model);
             }
 
-            if (_userRepository.GetByEmailAsync(model.Email).Result != null)
+            if (await _userRepository.GetByEmailAsync(model.Email) != null)
             {
                 ModelState.AddModelError("Email", "Користувач з таким Email вже існує.");
                 return View(model);
@@ -106,6 +107,46 @@ namespace PolyOmnia.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
+        }
+        [Authorize]
+        public async Task<IActionResult> Profile()
+        {
+            // 1. Отримуємо Claim з ID залогіненого користувача
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return RedirectToAction("Login");
+            }
+
+            // 2. Отримуємо юзера з БД
+            var user = await _userRepository.GetUserWithVideosAsync(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // 3. Формуємо ViewModel з маппінгом відео
+            var model = new UserProfileViewModel
+            {
+                UserId = user.Id,
+                Username = user.Login,
+                Email = user.Email,
+                // RegisteredAt = user.CreatedAt, // Переконайся, що це поле є в сутності User
+
+                UserVideos = user.Videos.Select(v => new UserVideoItemViewModel
+                {
+                    Id = v.Id,
+                    Title = v.Title,
+                    Description = v.Description,
+                    ThumbnailUrlOrPath = v.ThumbnailUrlOrPath,
+                    ViewCount = v.ViewCount,
+                    CreatedAt = v.CreatedAt,
+                    AllowDownload = v.AllowDownload
+                    //PrimaryGenreName = v.Genres?.Name // Якщо є зв'язок із Genre
+                }).ToList()
+            };
+
+            return View(model);
         }
     }
 }

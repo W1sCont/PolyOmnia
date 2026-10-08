@@ -204,14 +204,65 @@
   <data name="Create_UrlLabel" xml:space="preserve">
     <value>URL-адреса</value>
   </data>
+  <data name="Err_EmailOrLogin" xml:space="preserve">
+    <value>Введіть електронну пошту або ім'я користувача</value>
+  </data>
+  <data name="Err_EnterPassword" xml:space="preserve">
+    <value>Введіть пароль</value>
+  </data>
+  <data name="Err_FirstNameLength" xml:space="preserve">
+    <value>Ім'я має бути від 2 до 30 символів</value>
+  </data>
+  <data name="Err_InvalidEmail" xml:space="preserve">
+    <value>Некоректна адреса електронної пошти</value>
+  </data>
+  <data name="Err_LastNameLength" xml:space="preserve">
+    <value>Прізвище має бути від 2 до 30 символів</value>
+  </data>
+  <data name="Err_PasswordsDoNotMatch" xml:space="preserve">
+    <value>Паролі не збігаються</value>
+  </data>
+  <data name="Err_PasswordTooShort" xml:space="preserve">
+    <value>Пароль має містити щонайменше 6 символів</value>
+  </data>
+  <data name="Err_UsernameLength" xml:space="preserve">
+    <value>Логін має бути від 3 до 30 символів</value>
+  </data>
   <data name="Hero_DefaultBadge" xml:space="preserve">
     <value>Головне відео</value>
   </data>
   <data name="Home_Title" xml:space="preserve">
     <value>Головна</value>
   </data>
+  <data name="Label_Author" xml:space="preserve">
+    <value>Автор</value>
+  </data>
   <data name="Label_Default" xml:space="preserve">
     <value>За замовчуванням</value>
+  </data>
+  <data name="Label_Email" xml:space="preserve">
+    <value>Електронна пошта</value>
+  </data>
+  <data name="Label_EmailOrLogin" xml:space="preserve">
+    <value>Електронна пошта або ім'я користувача</value>
+  </data>
+  <data name="Label_FirstName" xml:space="preserve">
+    <value>Ім'я</value>
+  </data>
+  <data name="Label_General" xml:space="preserve">
+    <value>Загальне</value>
+  </data>
+  <data name="Label_LastName" xml:space="preserve">
+    <value>Прізвище</value>
+  </data>
+  <data name="Label_Login" xml:space="preserve">
+    <value>Логін</value>
+  </data>
+  <data name="Label_Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Label_RememberMe" xml:space="preserve">
+    <value>Запам'ятати мене</value>
   </data>
   <data name="Label_User" xml:space="preserve">
     <value>Користувач</value>
@@ -231,6 +282,9 @@
   <data name="Nav_Logout" xml:space="preserve">
     <value>Вийти</value>
   </data>
+  <data name="Nav_MyProfile" xml:space="preserve">
+    <value>Профіль</value>
+  </data>
   <data name="Nav_Profile" xml:space="preserve">
     <value>Профіль</value>
   </data>
@@ -245,6 +299,9 @@
   </data>
   <data name="Reg_AlreadyHaveAccount" xml:space="preserve">
     <value>Вже є акаунт?</value>
+  </data>
+  <data name="Reg_ConfirmPassword" xml:space="preserve">
+    <value>Підтвердження пароля</value>
   </data>
   <data name="Reg_CreateAccountPrompt" xml:space="preserve">
     <value>Створіть акаунт, щоб отримати доступ до всіх лекцій та можливостей</value>

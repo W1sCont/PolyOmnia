@@ -4,35 +4,35 @@ namespace PolyOmnia.Models
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Введіть ім'я")]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "Ім'я має бути від 2 до 30 символів")]
-        [Display(Name = "Ім'я")]
+        [Required(ErrorMessage = "Reg_EnterName")]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Err_FirstNameLength")]
+        [Display(Name = "Label_FirstName")]
         public string Name { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Введіть прізвище")]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "Прізвище має бути від 2 до 30 символів")]
-        [Display(Name = "Прізвище")]
+        [Required(ErrorMessage = "Reg_EnterSurname")]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Err_LastNameLength")]
+        [Display(Name = "Label_LastName")]
         public string Surname { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Введіть логін")]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "Логін має бути від 3 до 30 символів")]
-        [Display(Name = "Логін")]
+        [Required(ErrorMessage = "Reg_EnterLogin")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Err_UsernameLength")]
+        [Display(Name = "Label_Login")]
         public string Login { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Введіть Email")]
-        [EmailAddress(ErrorMessage = "Некоректний формат Email")]
-        [Display(Name = "Email")]
+        [Required(ErrorMessage = "Reg_EnterEmail")]
+        [EmailAddress(ErrorMessage = "Err_InvalidEmail")]
+        [Display(Name = "Label_Email")]
         public string Email { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Введіть пароль")]
-        [StringLength(100, MinimumLength = 6, ErrorMessage = "Пароль має містити щонайменше 6 символів")]
+        [Required(ErrorMessage = "Reg_EnterPassword")]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "Err_PasswordTooShort")]
         [DataType(DataType.Password)]
-        [Display(Name = "Пароль")]
+        [Display(Name = "Label_Password")]
         public string Password { get; set; } = string.Empty;
 
         [DataType(DataType.Password)]
-        [Display(Name = "Підтвердження пароля")]
-        [Compare("Password", ErrorMessage = "Паролі не збігаються")]
+        [Display(Name = "Reg_ConfirmPassword")]
+        [Compare("Password", ErrorMessage = "Err_PasswordsDoNotMatch")]
         public string ConfirmPassword { get; set; } = string.Empty;
     }
 }

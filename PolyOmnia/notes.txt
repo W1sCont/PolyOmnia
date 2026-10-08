@@ -1,0 +1,11 @@
+проблема з збіркою після додавання локазіції
+вирішення: 
+у файл project.csproj додати наступний рядок:
+<PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    !!! ->
+    <GenerateSatelliteAssembliesForCore>true</GenerateSatelliteAssembliesForCore>
+    !!! ->
+  </PropertyGroup>
