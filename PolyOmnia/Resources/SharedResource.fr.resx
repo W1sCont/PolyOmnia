@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,79 +26,79 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -119,227 +119,314 @@
   </resheader>
   <data name="Auth_Authorization" xml:space="preserve">
     <value>Autorisation</value>
+    <comment/>
   </data>
   <data name="Auth_ForgotPassword" xml:space="preserve">
     <value>Mot de passe oublié ?</value>
+    <comment/>
   </data>
   <data name="Auth_LoginToContinue" xml:space="preserve">
     <value>Connectez-vous à votre compte pour continuer à regarder</value>
+    <comment/>
   </data>
   <data name="Auth_NoAccount" xml:space="preserve">
     <value>Vous n'avez pas encore de compte ?</value>
+    <comment/>
   </data>
   <data name="Auth_RememberMe" xml:space="preserve">
     <value>Se souvenir de moi sur cet appareil</value>
+    <comment/>
   </data>
   <data name="Auth_Welcome_Title" xml:space="preserve">
     <value>Bienvenue sur</value>
+    <comment/>
   </data>
   <data name="Btn_Cancel" xml:space="preserve">
     <value>Annuler</value>
+    <comment/>
   </data>
   <data name="Btn_Download" xml:space="preserve">
     <value>Télécharger</value>
+    <comment/>
   </data>
   <data name="Btn_DownloadDisabled" xml:space="preserve">
     <value>Téléchargement restreint</value>
+    <comment/>
   </data>
   <data name="Btn_DownloadVideo" xml:space="preserve">
     <value>Télécharger la vidéo</value>
+    <comment/>
   </data>
   <data name="Btn_Login" xml:space="preserve">
     <value>Connexion</value>
+    <comment/>
   </data>
   <data name="Btn_Register" xml:space="preserve">
     <value>S'inscrire</value>
+    <comment/>
   </data>
   <data name="Btn_Report" xml:space="preserve">
     <value>Signaler</value>
+    <comment/>
   </data>
   <data name="Btn_Save" xml:space="preserve">
     <value>Enregistrer</value>
+    <comment/>
   </data>
   <data name="Btn_WatchNow" xml:space="preserve">
     <value>Regarder</value>
+    <comment/>
   </data>
   <data name="Category_All" xml:space="preserve">
     <value>Toutes</value>
+    <comment/>
   </data>
   <data name="Category_CategoryName" xml:space="preserve">
     <value>Nom de la catégorie</value>
+    <comment/>
   </data>
   <data name="Category_New" xml:space="preserve">
     <value>Nouvelle catégorie</value>
+    <comment/>
   </data>
   <data name="Create_AllowDownload" xml:space="preserve">
     <value>Autoriser les utilisateurs à télécharger la vidéo</value>
+    <comment/>
   </data>
   <data name="Create_BtnSubmit" xml:space="preserve">
     <value>Publier la vidéo</value>
+    <comment/>
   </data>
   <data name="Create_Description" xml:space="preserve">
     <value>Description</value>
+    <comment/>
   </data>
   <data name="Create_DescriptionPlaceholder" xml:space="preserve">
     <value>Courte description de la vidéo...</value>
+    <comment/>
   </data>
   <data name="Create_FileHelp" xml:space="preserve">
     <value>Formats pris en charge : .mp4, .webm, .mkv (max. 500 Mo)</value>
+    <comment/>
   </data>
   <data name="Create_SourceLocalFile" xml:space="preserve">
     <value>Importer un fichier depuis l'appareil</value>
+    <comment/>
   </data>
   <data name="Create_SourceTypeLabel" xml:space="preserve">
     <value>Source de la vidéo</value>
+    <comment/>
   </data>
   <data name="Create_SourceURL" xml:space="preserve">
     <value>Lien de la vidéo ou du flux</value>
+    <comment/>
   </data>
   <data name="Create_ThumbnailLabel" xml:space="preserve">
     <value>Importer la miniature</value>
+    <comment/>
   </data>
   <data name="Create_TitleLabel" xml:space="preserve">
     <value>Titre de la vidéo</value>
+    <comment/>
   </data>
   <data name="Create_UrlLabel" xml:space="preserve">
     <value>Adresse URL</value>
+    <comment/>
   </data>
   <data name="Err_EmailOrLogin" xml:space="preserve">
     <value>Entrez votre e-mail ou nom d'utilisateur</value>
+    <comment/>
   </data>
   <data name="Err_EnterPassword" xml:space="preserve">
     <value>Entrez votre mot de passe</value>
+    <comment/>
   </data>
   <data name="Err_FirstNameLength" xml:space="preserve">
     <value>Le prénom doit contenir entre 2 et 30 caractères</value>
+    <comment/>
   </data>
   <data name="Err_InvalidEmail" xml:space="preserve">
     <value>Format d'e-mail invalide</value>
+    <comment/>
   </data>
   <data name="Err_LastNameLength" xml:space="preserve">
     <value>Le nom de famille doit contenir entre 2 et 30 caractères</value>
+    <comment/>
   </data>
   <data name="Err_PasswordsDoNotMatch" xml:space="preserve">
     <value>Les mots de passe ne correspondent pas</value>
+    <comment/>
   </data>
   <data name="Err_PasswordTooShort" xml:space="preserve">
     <value>Le mot de passe doit contenir au moins 6 caractères</value>
+    <comment/>
   </data>
   <data name="Err_UsernameLength" xml:space="preserve">
     <value>Le nom d'utilisateur doit contenir entre 3 et 30 caractères</value>
+    <comment/>
   </data>
   <data name="Hero_DefaultBadge" xml:space="preserve">
     <value>Vidéo en vedette</value>
+    <comment/>
   </data>
   <data name="Home_Title" xml:space="preserve">
     <value>Accueil</value>
+    <comment/>
   </data>
   <data name="Label_Author" xml:space="preserve">
     <value>Auteur</value>
+    <comment/>
   </data>
   <data name="Label_Default" xml:space="preserve">
     <value>Par défaut</value>
+    <comment/>
   </data>
   <data name="Label_Email" xml:space="preserve">
     <value>Adresse e-mail</value>
+    <comment/>
   </data>
   <data name="Label_EmailOrLogin" xml:space="preserve">
     <value>E-mail ou identifiant</value>
+    <comment/>
   </data>
   <data name="Label_FirstName" xml:space="preserve">
     <value>Prénom</value>
+    <comment/>
   </data>
   <data name="Label_General" xml:space="preserve">
     <value>Général</value>
+    <comment/>
   </data>
   <data name="Label_LastName" xml:space="preserve">
     <value>Nom de famille</value>
+    <comment/>
   </data>
   <data name="Label_Login" xml:space="preserve">
     <value>Identifiant</value>
+    <comment/>
   </data>
   <data name="Label_Password" xml:space="preserve">
     <value>Mot de passe</value>
+    <comment/>
   </data>
   <data name="Label_RememberMe" xml:space="preserve">
     <value>Se souvenir de moi</value>
+    <comment/>
   </data>
   <data name="Label_User" xml:space="preserve">
     <value>Utilisateur</value>
+    <comment/>
   </data>
   <data name="Lesson_Materials" xml:space="preserve">
     <value>Matériel de cours :</value>
+    <comment/>
   </data>
   <data name="Nav_Categories" xml:space="preserve">
     <value>Catégories</value>
+    <comment/>
   </data>
   <data name="Nav_Home" xml:space="preserve">
     <value>Accueil</value>
+    <comment/>
   </data>
   <data name="Nav_Login" xml:space="preserve">
     <value>Connexion</value>
+    <comment/>
   </data>
   <data name="Nav_Logout" xml:space="preserve">
     <value>Déconnexion</value>
+    <comment/>
   </data>
   <data name="Nav_MyProfile" xml:space="preserve">
     <value>Profil</value>
+    <comment/>
   </data>
   <data name="Nav_Profile" xml:space="preserve">
     <value>Profil</value>
+    <comment/>
   </data>
   <data name="Nav_SearchPlaceholder" xml:space="preserve">
     <value>Rechercher...</value>
+    <comment/>
   </data>
   <data name="Nav_UploadVideo" xml:space="preserve">
     <value>Publier une vidéo</value>
+    <comment/>
   </data>
   <data name="Placeholder_CategoryExample" xml:space="preserve">
     <value>Par ex. : Intelligence Artificielle...</value>
+    <comment/>
   </data>
   <data name="Reg_AlreadyHaveAccount" xml:space="preserve">
     <value>Vous avez déjà un compte ?</value>
+    <comment/>
   </data>
   <data name="Reg_ConfirmPassword" xml:space="preserve">
     <value>Confirmez le mot de passe</value>
+    <comment/>
   </data>
   <data name="Reg_CreateAccountPrompt" xml:space="preserve">
     <value>Créez un compte pour accéder à l'ensemble des cours et des fonctionnalités</value>
+    <comment/>
   </data>
   <data name="Reg_EnterLogin" xml:space="preserve">
     <value>Entrez votre nom d'utilisateur</value>
+    <comment/>
   </data>
   <data name="Reg_EnterName" xml:space="preserve">
     <value>Entrez votre nom</value>
+    <comment/>
   </data>
   <data name="Reg_EnterSurname" xml:space="preserve">
     <value>Entrez votre nom de famille</value>
+    <comment/>
   </data>
   <data name="Reg_RegisterTitle" xml:space="preserve">
     <value>Inscription</value>
+    <comment/>
   </data>
   <data name="Status_ComingSoon" xml:space="preserve">
     <value>Bientôt</value>
+    <comment/>
   </data>
   <data name="Video_AuthorContent" xml:space="preserve">
     <value>Créateur de contenu</value>
+    <comment/>
   </data>
   <data name="Video_BrowserNotSupported" xml:space="preserve">
     <value>Votre navigateur ne prend pas en charge la lecture de vidéos.</value>
+    <comment/>
   </data>
   <data name="Video_DescriptionTitle" xml:space="preserve">
     <value>Description du matériel pédagogique :</value>
+    <comment/>
   </data>
   <data name="Video_MaterialsTitle" xml:space="preserve">
     <value>Dossier de ressources :</value>
+    <comment/>
   </data>
   <data name="Video_NoDescription" xml:space="preserve">
     <value>Aucune description disponible pour cette vidéo.</value>
+    <comment/>
   </data>
   <data name="Video_UnknownAuthor" xml:space="preserve">
     <value>Auteur inconnu</value>
+    <comment/>
   </data>
   <data name="Video_Views" xml:space="preserve">
     <value>vues</value>
+    <comment/>
+  </data>
+  <data name="Profile_MyVideos" xml:space="preserve">
+    <value>Mes vidéos</value>
+    <comment/>
+  </data>
+  <data name="Nav_ApproveUsers" xml:space="preserve">
+    <value>Confirmer les utilisateurs</value>
+    <comment/>
+  </data>
+  <data name="Nav_ApproveVideos" xml:space="preserve">
+    <value>Confirmer les vidéos</value>
+    <comment/>
   </data>
 </root>

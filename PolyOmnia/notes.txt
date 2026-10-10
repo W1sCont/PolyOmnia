@@ -9,3 +9,8 @@
     <GenerateSatelliteAssembliesForCore>true</GenerateSatelliteAssembliesForCore>
     !!! ->
   </PropertyGroup>
+
+
+   "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=PolyOmnia;Integrated Security=SSPI;TrustServerCertificate=true"
+  }

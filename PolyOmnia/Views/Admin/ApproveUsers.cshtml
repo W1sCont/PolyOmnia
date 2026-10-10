@@ -1,0 +1,94 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+@model IEnumerable<PolyOmnia.Models.AdminUserItemViewModel>
+
+@{
+    ViewData["Title"] = SharedLocalizer["Admin_ApproveUsers_Title"];
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="text-white font-monospace mb-1">
+                <i class="bi bi-person-check-fill text-primary me-2"></i>@SharedLocalizer["Admin_PendingUsers_Header"]
+            </h2>
+            <p class="text-muted small mb-0">@SharedLocalizer["Admin_PendingUsers_Subheader"]</p>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success bg-dark text-success border-success alert-dismissible fade show mb-4" role="alert">
+            <i class="bi bi-check-circle me-2"></i>@TempData["SuccessMessage"]
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="card bg-dark text-white border-secondary shadow-lg">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-dark table-hover mb-0 align-middle">
+                    <thead class="table-borderless border-bottom border-secondary text-muted font-monospace small">
+                        <tr>
+                            <th scope="col" class="ps-4" style="width: 80px;">ID</th>
+                            <th scope="col">@SharedLocalizer["Label_User"]</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">@SharedLocalizer["Label_CreatedAt"]</th>
+                            <th scope="col" class="text-end pe-4" style="width: 220px;">@SharedLocalizer["Label_Actions"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model == null || !Model.Any())
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center py-4 text-muted">
+                                    <i class="bi bi-person-x display-6 d-block mb-2 text-secondary"></i>
+                                    @SharedLocalizer["Admin_NoPendingUsers"]
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4 fw-bold text-muted">#@user.Id</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar-circle bg-secondary text-white d-flex align-items-center justify-content-center fw-bold rounded-circle shadow-sm" style="width: 32px; height: 32px; font-size: 14px;">
+                                                @(string.IsNullOrEmpty(user.Name) ? "U" : user.Name.Substring(0, 1).ToUpper())
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold">@user.Name @user.Surname</div>
+                                                <div class="text-muted fs-8">@@@user.Login</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>@user.Email</td>
+                                    <td class="text-muted small">@user.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                                    <td class="text-end pe-4">
+                                        <div class="d-flex justify-content-end gap-2">
+                                            <form asp-action="ApproveUser" asp-route-id="@user.Id" method="post" class="d-inline">
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-sm btn-success font-monospace">
+                                                    <i class="bi bi-check-lg me-1"></i> @SharedLocalizer["Btn_Approve"]
+                                                </button>
+                                            </form>
+                                            <form asp-action="RejectUser" asp-route-id="@user.Id" method="post" class="d-inline"
+                                                  onsubmit="return confirm('@SharedLocalizer["Confirm_RejectUser"]');">
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                    <i class="bi bi-x-lg"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,79 +26,79 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -119,227 +119,314 @@
   </resheader>
   <data name="Auth_Authorization" xml:space="preserve">
     <value>Авторизація</value>
+    <comment/>
   </data>
   <data name="Auth_ForgotPassword" xml:space="preserve">
     <value>Забули пароль?</value>
+    <comment/>
   </data>
   <data name="Auth_LoginToContinue" xml:space="preserve">
     <value>Увійдіть у свій акаунт, щоб продовжити перегляд</value>
+    <comment/>
   </data>
   <data name="Auth_NoAccount" xml:space="preserve">
     <value>Ще не маєте акаунту?</value>
+    <comment/>
   </data>
   <data name="Auth_RememberMe" xml:space="preserve">
     <value>Запам'ятати мене на цьому пристрої</value>
+    <comment/>
   </data>
   <data name="Auth_Welcome_Title" xml:space="preserve">
     <value>Вітаємо у</value>
+    <comment/>
   </data>
   <data name="Btn_Cancel" xml:space="preserve">
     <value>Скасувати</value>
+    <comment/>
   </data>
   <data name="Btn_Download" xml:space="preserve">
     <value>Завантажити</value>
+    <comment/>
   </data>
   <data name="Btn_DownloadDisabled" xml:space="preserve">
     <value>Завантаження обмежено</value>
+    <comment/>
   </data>
   <data name="Btn_DownloadVideo" xml:space="preserve">
     <value>Завантажити відео</value>
+    <comment/>
   </data>
   <data name="Btn_Login" xml:space="preserve">
     <value>Увійти</value>
+    <comment/>
   </data>
   <data name="Btn_Register" xml:space="preserve">
     <value>Зареєструватися</value>
+    <comment/>
   </data>
   <data name="Btn_Report" xml:space="preserve">
     <value>Поскаржитися</value>
+    <comment/>
   </data>
   <data name="Btn_Save" xml:space="preserve">
     <value>Зберегти</value>
+    <comment/>
   </data>
   <data name="Btn_WatchNow" xml:space="preserve">
     <value>Дивитися зараз</value>
+    <comment/>
   </data>
   <data name="Category_All" xml:space="preserve">
     <value>Всі</value>
+    <comment/>
   </data>
   <data name="Category_CategoryName" xml:space="preserve">
     <value>Назва категорії</value>
+    <comment/>
   </data>
   <data name="Category_New" xml:space="preserve">
     <value>Нова категорія</value>
+    <comment/>
   </data>
   <data name="Create_AllowDownload" xml:space="preserve">
     <value>Дозволити завантаження відеофайлу користувачам</value>
+    <comment/>
   </data>
   <data name="Create_BtnSubmit" xml:space="preserve">
     <value>Опублікувати відео</value>
+    <comment/>
   </data>
   <data name="Create_Description" xml:space="preserve">
     <value>Опис</value>
+    <comment/>
   </data>
   <data name="Create_DescriptionPlaceholder" xml:space="preserve">
     <value>Короткий опис відео...</value>
+    <comment/>
   </data>
   <data name="Create_FileHelp" xml:space="preserve">
     <value>Підтримуються формати .mp4, .webm, .mkv (макс. 500 МБ)</value>
+    <comment/>
   </data>
   <data name="Create_SourceLocalFile" xml:space="preserve">
     <value>Завантажити файл з комп'ютера</value>
+    <comment/>
   </data>
   <data name="Create_SourceTypeLabel" xml:space="preserve">
     <value>Джерело відео</value>
+    <comment/>
   </data>
   <data name="Create_SourceURL" xml:space="preserve">
     <value>Посилання на відео або Stream</value>
+    <comment/>
   </data>
   <data name="Create_ThumbnailLabel" xml:space="preserve">
     <value>Завантажити обкладинку</value>
+    <comment/>
   </data>
   <data name="Create_TitleLabel" xml:space="preserve">
     <value>Назва відео</value>
+    <comment/>
   </data>
   <data name="Create_UrlLabel" xml:space="preserve">
     <value>URL-адреса</value>
+    <comment/>
   </data>
   <data name="Err_EmailOrLogin" xml:space="preserve">
     <value>Введіть електронну пошту або ім'я користувача</value>
+    <comment/>
   </data>
   <data name="Err_EnterPassword" xml:space="preserve">
     <value>Введіть пароль</value>
+    <comment/>
   </data>
   <data name="Err_FirstNameLength" xml:space="preserve">
     <value>Ім'я має бути від 2 до 30 символів</value>
+    <comment/>
   </data>
   <data name="Err_InvalidEmail" xml:space="preserve">
     <value>Некоректна адреса електронної пошти</value>
+    <comment/>
   </data>
   <data name="Err_LastNameLength" xml:space="preserve">
     <value>Прізвище має бути від 2 до 30 символів</value>
+    <comment/>
   </data>
   <data name="Err_PasswordsDoNotMatch" xml:space="preserve">
     <value>Паролі не збігаються</value>
+    <comment/>
   </data>
   <data name="Err_PasswordTooShort" xml:space="preserve">
     <value>Пароль має містити щонайменше 6 символів</value>
+    <comment/>
   </data>
   <data name="Err_UsernameLength" xml:space="preserve">
     <value>Логін має бути від 3 до 30 символів</value>
+    <comment/>
   </data>
   <data name="Hero_DefaultBadge" xml:space="preserve">
     <value>Головне відео</value>
+    <comment/>
   </data>
   <data name="Home_Title" xml:space="preserve">
     <value>Головна</value>
+    <comment/>
   </data>
   <data name="Label_Author" xml:space="preserve">
     <value>Автор</value>
+    <comment/>
   </data>
   <data name="Label_Default" xml:space="preserve">
     <value>За замовчуванням</value>
+    <comment/>
   </data>
   <data name="Label_Email" xml:space="preserve">
     <value>Електронна пошта</value>
+    <comment/>
   </data>
   <data name="Label_EmailOrLogin" xml:space="preserve">
     <value>Електронна пошта або ім'я користувача</value>
+    <comment/>
   </data>
   <data name="Label_FirstName" xml:space="preserve">
     <value>Ім'я</value>
+    <comment/>
   </data>
   <data name="Label_General" xml:space="preserve">
     <value>Загальне</value>
+    <comment/>
   </data>
   <data name="Label_LastName" xml:space="preserve">
     <value>Прізвище</value>
+    <comment/>
   </data>
   <data name="Label_Login" xml:space="preserve">
     <value>Логін</value>
+    <comment/>
   </data>
   <data name="Label_Password" xml:space="preserve">
     <value>Пароль</value>
+    <comment/>
   </data>
   <data name="Label_RememberMe" xml:space="preserve">
     <value>Запам'ятати мене</value>
+    <comment/>
   </data>
   <data name="Label_User" xml:space="preserve">
     <value>Користувач</value>
+    <comment/>
   </data>
   <data name="Lesson_Materials" xml:space="preserve">
     <value>Матеріали уроку:</value>
+    <comment/>
   </data>
   <data name="Nav_Categories" xml:space="preserve">
     <value>Категорії</value>
+    <comment/>
   </data>
   <data name="Nav_Home" xml:space="preserve">
     <value>Головна</value>
+    <comment/>
   </data>
   <data name="Nav_Login" xml:space="preserve">
     <value>Вхід</value>
+    <comment/>
   </data>
   <data name="Nav_Logout" xml:space="preserve">
     <value>Вийти</value>
+    <comment/>
   </data>
   <data name="Nav_MyProfile" xml:space="preserve">
     <value>Профіль</value>
+    <comment/>
   </data>
   <data name="Nav_Profile" xml:space="preserve">
     <value>Профіль</value>
+    <comment/>
   </data>
   <data name="Nav_SearchPlaceholder" xml:space="preserve">
     <value>Пошук...</value>
+    <comment/>
   </data>
   <data name="Nav_UploadVideo" xml:space="preserve">
     <value>Додати відео</value>
+    <comment/>
   </data>
   <data name="Placeholder_CategoryExample" xml:space="preserve">
     <value>Наприклад: Штучний Інтелект...</value>
+    <comment/>
   </data>
   <data name="Reg_AlreadyHaveAccount" xml:space="preserve">
     <value>Вже є акаунт?</value>
+    <comment/>
   </data>
   <data name="Reg_ConfirmPassword" xml:space="preserve">
     <value>Підтвердження пароля</value>
+    <comment/>
   </data>
   <data name="Reg_CreateAccountPrompt" xml:space="preserve">
     <value>Створіть акаунт, щоб отримати доступ до всіх лекцій та можливостей</value>
+    <comment/>
   </data>
   <data name="Reg_EnterLogin" xml:space="preserve">
     <value>Введіть логін</value>
+    <comment/>
   </data>
   <data name="Reg_EnterName" xml:space="preserve">
     <value>Введіть ім'я</value>
+    <comment/>
   </data>
   <data name="Reg_EnterSurname" xml:space="preserve">
     <value>Введіть прізвище</value>
+    <comment/>
   </data>
   <data name="Reg_RegisterTitle" xml:space="preserve">
     <value>Реєстрація</value>
+    <comment/>
   </data>
   <data name="Status_ComingSoon" xml:space="preserve">
     <value>Скоро</value>
+    <comment/>
   </data>
   <data name="Video_AuthorContent" xml:space="preserve">
     <value>Автор контенту</value>
+    <comment/>
   </data>
   <data name="Video_BrowserNotSupported" xml:space="preserve">
     <value>Ваш браузер не підтримує відтворення відео.</value>
+    <comment/>
   </data>
   <data name="Video_DescriptionTitle" xml:space="preserve">
     <value>Опис навчального матеріалу:</value>
+    <comment/>
   </data>
   <data name="Video_MaterialsTitle" xml:space="preserve">
     <value>Папка матеріалів:</value>
+    <comment/>
   </data>
   <data name="Video_NoDescription" xml:space="preserve">
     <value>Опис до цього відео відсутній.</value>
+    <comment/>
   </data>
   <data name="Video_UnknownAuthor" xml:space="preserve">
     <value>Невідомий автор</value>
+    <comment/>
   </data>
   <data name="Video_Views" xml:space="preserve">
     <value>переглядів</value>
+    <comment/>
+  </data>
+  <data name="Profile_MyVideos" xml:space="preserve">
+    <value>Мої відео</value>
+    <comment/>
+  </data>
+  <data name="Nav_ApproveUsers" xml:space="preserve">
+    <value>Підтвердити користувачів </value>
+    <comment/>
+  </data>
+  <data name="Nav_ApproveVideos" xml:space="preserve">
+    <value>Підтвердити відео</value>
+    <comment/>
   </data>
 </root>

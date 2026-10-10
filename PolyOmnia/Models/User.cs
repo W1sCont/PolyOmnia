@@ -5,9 +5,10 @@ namespace PolyOmnia.Models
 {
     public enum UserRole
     {
-        User = 1,
-        Moderator = 2,
-        Admin = 3
+        Unconfirmed = 1,
+        User = 2,
+        Moderator = 3,
+        Admin = 4
     }
     public class User
     {
